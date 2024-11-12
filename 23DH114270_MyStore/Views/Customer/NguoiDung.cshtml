@@ -1,0 +1,53 @@
+﻿@model IEnumerable<_23DH114270_MyStore.Models.Customer>
+
+@{
+    ViewBag.Title = "NguoiDung";
+    Layout = "~/Views/Shared/_LayoutWeb.cshtml";
+}
+
+<h2>NguoiDung</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.First().CustomerName)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.First().CustomerPhone)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.First().CustomerEmail)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.First().CustomerAddress)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.First().User.Password)
+            </td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerPhone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerEmail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.Password)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

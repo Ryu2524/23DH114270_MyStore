@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewBag.Title = "TrangChu";
+    Layout = "~/Views/Shared/_LayoutWeb.cshtml";
+}
+
+<h2>TrangChu</h2>
+<div class="col-sm-1 col-md-2 col-lg-2 text-lg-center" style="background-color:whitesmoke; min-height: 95vh;">
+    <p>Các Loại Sách</p>
+    @{ Html.RenderAction("CategoryPartial", "Categories");}
+</div>

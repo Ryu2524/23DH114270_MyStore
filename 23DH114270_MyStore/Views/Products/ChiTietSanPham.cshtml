@@ -1,0 +1,62 @@
+﻿@*@model IEnumerable<_23DH114270_MyStore.Models.Product>*@
+@model _23DH114270_MyStore.Models.Product
+@{
+    ViewBag.Title = "ChiTietSanPham";
+    Layout = "~/Views/Shared/_LayoutWeb.cshtml";
+}
+<head>
+    <style>
+        img {
+            height: 150px;
+            width: 150px;
+        }
+    </style>
+</head>
+<h2>Chi Tiết Sản Phẩm</h2>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên Sách
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductName)
+        </dd>
+
+        <dt>
+            Mô Tả
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductDescription)
+        </dd>
+
+        <dt>
+            Giá Tiền
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductPrice)
+        </dd>
+
+        <dt>
+            Hình Ảnh
+        </dt>
+
+        <dd>
+            <img src=" @Html.DisplayFor(model => model.ProductImage) " />
+        </dd>
+
+        <dt>
+            Thể Loại
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category.CategoryName)
+        </dd>
+
+    </dl>
+</div>

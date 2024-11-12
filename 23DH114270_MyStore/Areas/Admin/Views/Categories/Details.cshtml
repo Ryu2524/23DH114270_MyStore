@@ -1,0 +1,28 @@
+﻿@model _23DH114270_MyStore.Models.Category
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutADM.cshtml";
+}
+
+<h2>CHI TIẾT</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dd>
+            <h4>
+                Tên danh mục
+            </h4>
+        </dd>
+
+        <dd>
+            @Html.DisplayFor(model => model.CategoryName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.CategoryID }) |
+    @Html.ActionLink("Quay lại", "Index")
+</p>

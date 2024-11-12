@@ -1,0 +1,50 @@
+﻿@model IEnumerable<_23DH114270_MyStore.Models.Category>
+@*Chỉnh hiện danh mục*@
+<style>
+    .div-cate {
+        margin: 0 10px;
+    }
+
+    #div-u {
+    }
+
+    .nav-item {
+        margin: 5px 15px;
+        width: auto;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        padding: 8px;
+    }
+
+        .nav-item:hover {
+            border: 2px solid #ded9d9;
+            border-radius: 5px;
+        }
+
+        .nav-item a {
+            margin: 0 0;
+            color: black;
+            text-decoration: none;
+        }
+
+            .nav-item a:hover {
+                color: #808080;
+            }
+</style>
+<div>
+    <ul style="list-style-type: none;" id="div-u" class="nav justify-content-evenly, w-auto">
+        @{
+            foreach (var item in Model)
+            {
+                <li class="nav-item div-cate ">
+                    @Html.ActionLink(item.CategoryName, "SanPham", "Products", new { category = item.CategoryID }, "")
+                </li>
+                <hr />
+            }
+        }
+    </ul>
+</div>
+
+
