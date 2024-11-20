@@ -1,68 +1,68 @@
 ﻿@model _23DH114270_MyStore.Models.Product
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Thêm Sản Phẩm";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutADM.cshtml";
 }
 
-<h2>Create</h2>
+<h2 class="text-center my-4">THÊM SẢN PHẨM</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>Product</h4>
         <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.CategoryID, "CategoryID", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.ValidationSummary(true, "", new { @class = "text-danger text-center" })
+
+        <div class="form-group row mb-3">
+            <label for="CategoryID" class="col-md-2 col-form-label">Danh mục</label>
             <div class="col-md-10">
                 @Html.DropDownList("CategoryID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.CategoryID, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ProductName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="form-group row mb-3">
+            <label for="ProductName" class="col-md-2 col-form-label">Tên sản phẩm</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.ProductName, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.ProductName, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ProductDescription, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="form-group row mb-3">
+            <label for="ProductDescription" class="col-md-2 col-form-label">Mô tả</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.ProductDescription, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.ProductDescription, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ProductPrice, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="form-group row mb-3">
+            <label for="ProductPrice" class="col-md-2 col-form-label">Giá</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.ProductPrice, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.ProductPrice, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ProductImage, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="form-group row mb-3">
+            <label for="ProductImage" class="col-md-2 col-form-label">Hình ảnh</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.ProductImage, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.ProductImage, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+        <div class="form-group row">
+            <div class="col-md-10 offset-md-2">
+                <input type="submit" value="Thêm" class="btn btn-primary" />
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+<div class="text-center mt-3">
+    @Html.ActionLink("Quay lại danh sách", "Index", null, new { @class = "btn btn-secondary" })
 </div>

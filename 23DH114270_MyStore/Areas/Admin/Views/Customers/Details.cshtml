@@ -1,59 +1,33 @@
 ﻿@model _23DH114270_MyStore.Models.Customer
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Chi Tiết Người Dùng";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutADM.cshtml";
 }
 
-<h2>Details</h2>
+<h2 class="text-center my-4">CHI TIẾT NGƯỜI DÙNG</h2>
 
-<div>
-    <h4>Customer</h4>
+<div class="container">
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.CustomerName)
-        </dt>
+    <dl class="row">
+        <dt class="col-sm-3">Tên người dùng</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.CustomerName)</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.CustomerName)
-        </dd>
+        <dt class="col-sm-3">Số điện thoại</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.CustomerPhone)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CustomerPhone)
-        </dt>
+        <dt class="col-sm-3">Email</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.CustomerEmail)</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.CustomerPhone)
-        </dd>
+        <dt class="col-sm-3">Địa chỉ</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.CustomerAddress)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CustomerEmail)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CustomerEmail)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CustomerAddress)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CustomerAddress)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.User.Password)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.User.Password)
-        </dd>
-
+        <dt class="col-sm-3">Mật khẩu</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.User.Password)</dd>
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.CustomerID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+<div class="text-center mt-3">
+    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.CustomerID }, new { @class = "btn btn-primary mx-2" }) 
+    @Html.ActionLink("Quay lại danh sách", "Index", null, new { @class = "btn btn-secondary mx-2" })
+</div>

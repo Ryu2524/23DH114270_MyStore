@@ -15,10 +15,20 @@ namespace _23DH114270_MyStore.Areas.Admin.Controllers
         private MyStoreEntities db = new MyStoreEntities();
 
         // GET: Admin/Products
-        public ActionResult Index()
+        public ActionResult Index(string SearchString)
         {
+            // Kiểm tra giá trị của searchString
+            System.Diagnostics.Debug.WriteLine("Search String: " + SearchString);
+
             var products = db.Products.Include(p => p.Category);
+
+            //tim san pham theo ten
+            if (!String.IsNullOrEmpty(SearchString))
+            {
+                products = db.Products.OrderByDescending(x => x.CategoryID).Where(s => s.ProductName.Contains(SearchString.Trim()));
+            }
             return View(products.ToList());
+
         }
 
         // GET: Admin/Products/Details/5

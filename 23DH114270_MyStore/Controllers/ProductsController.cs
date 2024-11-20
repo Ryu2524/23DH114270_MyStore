@@ -17,21 +17,25 @@ namespace _23DH114270_MyStore.Controllers
         // GET: Admin/Products
         public ActionResult SanPham(int ? category , string SearchString)
         {
-            var products = db.Products.Include(p => p.Category);
-            // Tìm kiếm chuỗi truy vấn theo category
-            if (category == null)
+            var products = db.Products.Include(p => p.Category).AsQueryable();
+
+            if (category.HasValue)
             {
-                products = db.Products.OrderByDescending(x => x.ProductName);
+                products = products.Where(p => p.CategoryID == category.Value);
+            }
+
+            if (!String.IsNullOrEmpty(SearchString))
+            {
+                products = products.Where(s => s.ProductName.Contains(SearchString.Trim()));
+                ViewBag.CurrentSearchString = SearchString; // Lưu giá trị tìm kiếm hiện tại
             }
             else
             {
-                products = db.Products.OrderByDescending(x => x.CategoryID).Where(x => x.CategoryID == category);
+                ViewBag.CurrentSearchString = string.Empty; // Đặt giá trị mặc định
             }
-            //tim san pham theo ten
-            if (!String.IsNullOrEmpty(SearchString))
-            {
-                products = db.Products.OrderByDescending(x => x.CategoryID).Where(s => s.ProductName.Contains(SearchString.Trim()));
-            }
+
+            products = products.OrderByDescending(x => x.ProductName);
+
             return View(products.ToList());
         }
         public ActionResult ChiTietSanPham(int? id)
@@ -46,6 +50,6 @@ namespace _23DH114270_MyStore.Controllers
                 return HttpNotFound();
             }
             return View(product);
-        }
+        }  
     }
 }

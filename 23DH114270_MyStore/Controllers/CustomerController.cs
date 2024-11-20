@@ -16,8 +16,18 @@ namespace _23DH114270_MyStore.Controllers
         // GET: Admin/Customers
         public ActionResult NguoiDung()
         {
-            var customers = db.Customers.Include(c => c.User).ToList();
-            return View(customers);
+            // Lấy tên người dùng từ session
+            var username = Session["Username"] as string;
+
+            if (username != null)
+            {
+                // Tìm người dùng dựa trên tên người dùng
+                var customer = db.Customers.Include(c => c.User).SingleOrDefault(c => c.Username == username);
+                return View(customer);
+            }
+
+            // Nếu không có người dùng đăng nhập, chuyển hướng đến trang đăng nhập
+            return RedirectToAction("DangNhap", "User ");
         }
     }
 }

@@ -1,53 +1,36 @@
-﻿@model IEnumerable<_23DH114270_MyStore.Models.Customer>
+﻿@model _23DH114270_MyStore.Models.Customer
 
 @{
-    ViewBag.Title = "NguoiDung";
+    ViewBag.Title = "Thông tin người dùng";
     Layout = "~/Views/Shared/_LayoutWeb.cshtml";
 }
 
-<h2>NguoiDung</h2>
+<h2>Thông tin người dùng</h2>
 
-<table class="table">
-    <thead>
-        <tr>
-            <td>
-                @Html.DisplayNameFor(model => model.First().CustomerName)
-            </td>
-            <td>
-                @Html.DisplayNameFor(model => model.First().CustomerPhone)
-            </td>
-            <td>
-                @Html.DisplayNameFor(model => model.First().CustomerEmail)
-            </td>
-            <td>
-                @Html.DisplayNameFor(model => model.First().CustomerAddress)
-            </td>
-            <td>
-                @Html.DisplayNameFor(model => model.First().User.Password)
-            </td>
-            <td></td>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+@if (Model != null)
+{
+    <table class="table">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CustomerName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CustomerPhone)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CustomerEmail)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CustomerAddress)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.User.Password)
-                </td>
+                <th>Tên người dùng</th>
+                <th>Số điện thoại</th>
+                <th>Email</th>
+                <th>Địa chỉ</th>
+                <th>Mật khẩu</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Html.DisplayFor(model => Model.CustomerName)</td>
+                <td>@Html.DisplayFor(model => Model.CustomerPhone)</td>
+                <td>@Html.DisplayFor(model => Model.CustomerEmail)</td>
+                <td>@Html.DisplayFor(model => Model.CustomerAddress)</td>
+                <td>@Html.DisplayFor(model => Model.User.Password)</td>
+            </tr>
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Không có thông tin người dùng.</p>
+}

@@ -1,0 +1,18 @@
+﻿@model IEnumerable<_23DH114270_MyStore.Models.Product>
+
+<div class="row">
+    @foreach (var product in Model)
+    {
+        <div class="col-md-3">
+            <div class="thumbnail">
+                <img src="@product.ProductImage" alt="@product.ProductName" class="img-responsive" />
+                <div class="caption">
+                    <h4>@product.ProductName</h4>
+                    <p>@product.ProductDescription</p>
+                    <p><strong>@product.ProductPrice đ</strong></p>
+                    @Html.ActionLink("Xem chi tiết", "Details", "Product", new { id = product.ProductID }, new { @class = "btn btn-primary" })
+                </div>
+            </div>
+        </div>
+    }
+</div>

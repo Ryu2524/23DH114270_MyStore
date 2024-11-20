@@ -1,11 +1,47 @@
-﻿
+﻿@model _23DH114270_MyStore.Models.HomeViewModel
+
 @{
-    ViewBag.Title = "TrangChu";
-    Layout = "~/Views/Shared/_LayoutWeb.cshtml";
+    ViewBag.Title = "Trang Chủ";
+    Layout = "~/Views/Shared/_LayoutWeb.cshtml"; // Đường dẫn đến layout
 }
 
-<h2>TrangChu</h2>
-<div class="col-sm-1 col-md-2 col-lg-2 text-lg-center" style="background-color:whitesmoke; min-height: 95vh;">
-    <p>Các Loại Sách</p>
+<h2 class="text-center my-4">Danh Mục</h2>
+<div class="container">
     @{ Html.RenderAction("CategoryPartial", "Categories");}
 </div>
+<h2 class="text-center my-4">Sản Phẩm Nổi Bật</h2>
+
+<div class="container">
+    <div class="row">
+        @if (Model.Products != null && Model.Products.Any()) // Kiểm tra xem danh sách sản phẩm có tồn tại và không rỗng
+        {
+            foreach (var product in Model.Products) // Duyệt qua từng sản phẩm
+            {
+                <div class="col-md-4">
+                    <div class="card mb-4 product-card" style="max-width: 250px;">
+                        <!-- Giới hạn chiều rộng của card -->
+                        <img src="@Url.Content(product.ProductImage)" class="card-img-top" alt="@product.ProductName" style="max-height: 150px; object-fit: cover;" /> <!-- Hình ảnh sản phẩm -->
+                        <div class="card-body">
+                            <h5 class="card-title" style="font-size: 1rem;">@product.ProductName</h5> <!-- Tên sản phẩm -->
+                            <p class="card-text" style="font-size: 0.9rem; max-height: 50px; overflow: hidden; text-overflow: ellipsis;">@product.ProductDescription</p> <!-- Mô tả sản phẩm -->
+                            <p class="card-text"><strong>@product.ProductPrice.ToString("C")</strong></p> <!-- Giá sản phẩm -->
+                            <a href="@Url.Action("ChiTietSanPham", "Products", new { id = product.ProductID })" class="btn btn-primary btn-sm">Xem Chi Tiết</a> <!-- Nút xem chi tiết -->
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="col-md-12">
+                <p class="text-center">Không có sản phẩm nào để hiển thị.</p> <!-- Thông báo nếu không có sản phẩm -->
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    .product-card {
+        margin: 10px; /* Giảm khoảng cách giữa các sản phẩm */
+    }
+</style>

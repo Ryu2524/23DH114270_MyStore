@@ -19,8 +19,16 @@
                 <ul class="navbar-nav flex-grow-1">
                     <li>@Html.ActionLink("Trang Chủ", "TrangChu", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Tủ Sách", "SanPham", "Products", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Giỏ Hàng", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Tài Khoản", "NguoiDung", "Customer", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Giỏ Hàng", "ShowCart", "ShoppingCart", new { area = "" }, new { @class = "nav-link" })</li>
+                    @if (Session["Username"] != null) // Kiểm tra xem người dùng đã đăng nhập chưa
+                    {
+                        <li>@Html.ActionLink("Tài Khoản", "NguoiDung", "Customer", new { area = "" }, new { @class = "nav-link" })</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Đăng Nhập", "DangNhap", "User", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Đăng Ký", "DangKy", "User", new { area = "" }, new { @class = "nav-link" })</li>
+                    }
                 </ul>
             </div>
             <div>
@@ -33,7 +41,7 @@
     </nav>
     <div class="container-fluid body-content mt-0">
         <div class="row">
-            
+
             <div class="col-md-10" id="div-content">
                 @RenderBody()
             </div>
@@ -43,4 +51,5 @@
         @RenderSection("scripts", required: false)
     </div>
 </body>
+
 </html>

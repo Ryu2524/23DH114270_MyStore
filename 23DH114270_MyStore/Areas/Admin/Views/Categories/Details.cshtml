@@ -1,28 +1,24 @@
 ﻿@model _23DH114270_MyStore.Models.Category
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Chi Tiết Danh Mục";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutADM.cshtml";
 }
 
-<h2>CHI TIẾT</h2>
+<h2 class="text-center my-4">CHI TIẾT DANH MỤC</h2>
 
-<div>
+<div class="container">
     <hr />
-    <dl class="dl-horizontal">
-        <dd>
-            <h4>
-                Tên danh mục
-            </h4>
-        </dd>
-
-        <dd>
+    <dl class="row">
+        <dt class="col-sm-3">
+            <h4>Tên danh mục</h4>
+        </dt>
+        <dd class="col-sm-9">
             @Html.DisplayFor(model => model.CategoryName)
         </dd>
-
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.CategoryID }) |
-    @Html.ActionLink("Quay lại", "Index")
-</p>
+<div class="text-center mt-3">
+    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.CategoryID }, new { @class = "btn btn-primary mx-2" }) |
+    @Html.ActionLink("Quay lại", "Index", null, new { @class = "btn btn-secondary mx-2" })
+</div>
